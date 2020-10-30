@@ -12,9 +12,9 @@
     <h4>Make a new post:</h4>
     <form action="/newpost#" method='post'>
         <p><input name='title' placeholder="Title" maxlength=32 value = {{title if title}}></p>
-        <p><input name='content' placeholder="Content" value = {{content if content}}></p>
+        <textarea name="content" placeholder="Content" value = {{content if content}} rows="4" cols="50"></textarea>
         <p><input name='color' placeholder="Hex Color Code"></p>
-        <p><input type='submit' value='submit'></p>
+        <p><input type='submit' value='Submit'></p>
         
     </form>
 {% endblock %}

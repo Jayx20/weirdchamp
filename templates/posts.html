@@ -2,6 +2,13 @@
 {%block title%}Browse Posts{%endblock%}
 
 {% block content %}
+
+    <div id='pagenav'>
+        {% if page > 1 %}<a class="navlink" href="/posts/{{page-1}}">Last Page</a>{% endif %}
+        <span id="pagenum">{{page}}</span>
+        {% if page + 1 < lastPage %}<a class="navlink" href="/posts/{{page+1}}">Next Page</a>{% endif %}
+    </div>
+
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for msg in messages %}

@@ -35,6 +35,16 @@ header {
 	display: inline-block;
 }
 
+#pagenav {
+	list-style-type: none;
+	margin: 10px 0px 0.5em;
+	padding-inline-start: 0px;
+}
+
+#pagenav li {
+	display: inline-block;
+}
+
 .navlink {
   background-color: #06799f;
   box-shadow: 0 5px 0 #04506b;
@@ -43,6 +53,15 @@ header {
   text-decoration: none;
   position:relative;
 }
+
+#pagenum {
+    background-color: #06799f;
+    box-shadow: 0 5px 0 #04506b;
+    color: white;
+    padding: 4px 4px;
+    text-decoration: none;
+    position:relative;
+  }
 
 .navlink:hover {
   background-color: #3aaacf;

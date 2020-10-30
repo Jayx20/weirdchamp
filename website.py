@@ -1,4 +1,4 @@
-from flask import Flask, request, flash, redirect
+from flask import Flask, request, flash, redirect, session
 from flask.helpers import url_for
 from flask.templating import render_template
 from flask_sqlalchemy import SQLAlchemy
@@ -22,9 +22,23 @@ class Post(db.Model):
 
 @app.route("/")
 @app.route("/posts")
-def posts():
-    postList = Post.query.order_by(Post.id.desc()).limit(100)
-    return render_template("posts.html", post_list = postList)
+@app.route("/posts/<page>")
+def posts(page = 1):
+    try:
+        page = int(page)
+    except:
+        flash("Page"+page+"does not exist.")
+        return redirect(url_for("posts"))
+    if page < 1:
+        flash("Page"+page+"does not exist.")
+        return redirect(url_for("posts"))
+
+    lastPage = (Post.query.count()/postsPerPage())+1
+    firstPost = (page-1)*postsPerPage()
+    lastPost = firstPost+postsPerPage()
+
+    postList = Post.query.order_by(Post.id.desc())[firstPost:lastPost]
+    return render_template("posts.html", post_list = postList, page = page, lastPage = lastPage)
 
 @app.route("/newpost", methods = ['GET','POST'])
 def newpost():
@@ -48,6 +62,28 @@ def newpost():
         content = request.args.get('content')
         return render_template("newpost.html", title = title, content = content)
 
+@app.route("/settings", methods = ['GET','POST'])
+def settings():
+    if request.method == "POST":
+        posts_per_page = request.form["posts_per_page"]
+        if posts_per_page:
+            session['posts_per_page'] = posts_per_page
+        flash("Saved settings.")
+        return redirect(url_for("settings"))
+    else:
+
+        return render_template("settings.html", posts_per_page = postsPerPage())
+
+def postsPerPage() -> int:
+    posts_per_page = session.get('posts_per_page')
+    if posts_per_page == None:
+        posts_per_page = 10
+    try:
+        posts_per_page = int(posts_per_page)
+    except:
+        posts_per_page = 10
+    return posts_per_page
+
 if __name__ == "__main__":
     db.create_all()
-    app.run()
+    app.run(debug = True)

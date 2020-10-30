@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h4>Settings</h4>
+    <form action="/settings#" method='post'>
+        <p>Posts per page:</p>
+        <p><input type='number' name='posts_per_page' value = {{posts_per_page if posts_per_page}}></p>
+        <p><input type='submit' value='Save'></p>
+        
+    </form>
+{% endblock %}
