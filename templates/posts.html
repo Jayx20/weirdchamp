@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{%block title%}Browse Posts{%endblock%}
+
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% for post in post_list%}
+    <div class="post" style="background-color: #{{post.color}}">
+            <div class="post_head">
+                <span class="post_title">{{post.title}}</span>
+                <span class="post_date">{{post.date}}</span>
+                <span class="post_id">{{post.id}}</span>
+            </div>
+            <div class="post_content">
+                <p>
+                    {{post.content}}
+                </p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

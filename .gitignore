@@ -1,0 +1,4 @@
+secrets.py
+chan.db
+*.code-workspace
+__pycache__/

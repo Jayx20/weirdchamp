@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>{%block title%}{%endblock%}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/test.css') }}">
+    </head>
+    <body>
+        <div id="spacebox">
+        <header id="header">
+            <h3 id="headtitle">Jayx20 CHAN</h3>
+            <nav id="navx20">
+                <ol>
+                    <li><a class="navlink" href="posts">View Posts</a></li>
+                    <li><a class="navlink" href="newpost">New Post</a></li>
+                </ol>
+            </nav>
+        </header>
+        <main>{%block content%}{%endblock%}</main>
+    </div>
+    </body>
+</html>

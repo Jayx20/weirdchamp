@@ -1,0 +1,88 @@
+body {
+    font-family: "Arial";
+    background-color: #02212b;
+}
+
+#spacebox {
+	border-radius:5px;
+	margin: 2%;
+	background-color:#206280;
+	color:white;
+	box-shadow:0px 0px 10px 8px #99bbcc;
+}
+
+header {
+	border-radius:5px;
+    background-color: #143E51;
+    color: white;
+    border-bottom: 1px solid black;
+    padding: 20px 20px;
+}
+
+#headtitle {
+	margin-top:0.2em;
+	margin-bottom:0.2em;
+}
+
+#navx20 ol {
+	list-style-type: none;
+	margin: 10px 0px 0.5em;
+	padding-inline-start: 0px;
+	
+}
+
+#navx20 li {
+	display: inline-block;
+}
+
+.navlink {
+  background-color: #06799f;
+  box-shadow: 0 5px 0 #04506b;
+  color: white;
+  padding: 4px 4px;
+  text-decoration: none;
+  position:relative;
+}
+
+.navlink:hover {
+  background-color: #3aaacf;
+  cursor: pointer;
+}
+
+.navlink:active {
+  box-shadow: none;
+  top: 5px;
+}
+
+main {
+    padding: 10px; 
+}
+
+.post_head {
+    border-bottom: 1px solid black;
+}
+
+.post_title {
+    padding-right: 4px;
+    color: darkgreen;
+    font-weight: bold;
+    border-right: 1px solid black;
+}
+
+.post_date {
+    padding-right: 4px;
+    color: darkred;
+    border-right: 1px solid black;
+}
+
+.post_ID {
+    color: black;
+}
+
+.post {
+    color:black;
+    background-color: #cfdeec;
+    border: 5px outset grey;
+    padding: 20px;
+    margin: 20px;
+}
